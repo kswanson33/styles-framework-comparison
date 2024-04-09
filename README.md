@@ -21,22 +21,22 @@ The CSS generated from the `sass` folder is in the `css` folder (this is confusi
 ## Evaluation:
 
 Sass:
-+ Good support for input of CSS, strong validation
-+ Support for **automated source mapping**
-* Variables not always clickable across files
-- Syntax is more clunky - all advanced stuff sits on top of CSS
-+ Nested CSS compiles to flattened CSS
+- \+ Good support for input of CSS, strong validation
+- \+ Support for **automated source mapping**
+- \* Variables not always clickable across files
+- \- Syntax is more clunky - all advanced stuff sits on top of CSS
+- \+ Nested CSS compiles to flattened CSS
 
 Ruby:
-* CSS input with heredocs. Validation/colorization is pretty good but sometimes buggy
-- No support for source mapping. A few hacky manual options.
-* Variables not always clickable across files
-+ Nice programmatic syntax
-- Nested CSS remains nested
+- \* CSS input with heredocs. Validation/colorization is pretty good but sometimes buggy
+- \- No support for source mapping. A few hacky manual options.
+- \* Variables not always clickable across files
+- \+ Nice programmatic syntax
+- \- Nested CSS remains nested
 
 TS:
-* CSS input - similar to heredocs, a VSCode extension allows colorization
-* Source mapping support is present but **manual only**
-* Variables not always clickable across files
-- Not as nice syntax as Ruby (imo)
-- Nested CSS remains nested
+- \* CSS input - similar to heredocs, a VSCode extension allows colorization
+- \* Source mapping support is present but **manual only**
+- \* Variables not always clickable across files
+- \- Not as nice syntax as Ruby (imo)
+- \- Nested CSS remains nested
