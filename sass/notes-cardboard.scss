@@ -1,0 +1,64 @@
+@use "sass:map";
+@use "sass:list";
+
+@use "theme-cardboard";
+
+// Feature code
+
+@mixin note-boxed-subtitle($root, $color-option) {
+  // Color options for each note part
+  // part name       option1  option2  ...
+  $title-text:       "white", "black"  ;
+  $title-background: "blue1", "orange1";
+  $body-background:  "blue2", "blue4"  ;
+  $subtitle-text:    "blue3", "blue3"  ;
+  // Styles
+  #{$root} {
+    margin-bottom: 1.4rem;
+    > .os-title {
+      color: map.get(theme-cardboard.$colors, list.nth($title-text, $color-option));
+      font-family: map.get(theme-cardboard.$fonts, "title");
+      font-size: 1.2rem;
+      line-height: 1.5rem;
+      text-transform: uppercase;
+      font-weight: normal;
+      background-color: map.get(theme-cardboard.$colors, list.nth($title-background, $color-option));
+      border-radius: 0.25rem 0.25rem 0 0;
+      padding: 0.7rem;
+    }
+    > .os-note-body {
+      font-family: map.get(theme-cardboard.$fonts, "base");
+      font-size: 1rem;
+      line-height: 1.5rem;
+      background-color: map.get(theme-cardboard.$colors, list.nth($body-background, $color-option));
+      padding: 0.7rem;
+      > .os-subtitle {
+        color: map.get(theme-cardboard.$colors, list.nth($subtitle-text, $color-option));
+        font-family: map.get(theme-cardboard.$fonts, "title");
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+        font-weight: normal;
+        margin-bottom: 0.7rem;
+      }
+      > [data-type=exercise] {
+        > [data-type=problem], > [data-type=solution] {
+          > h4 {
+            font-family: map.get(theme-cardboard.$fonts, "base");
+            font-size: 1.2rem;
+            font-weight: bold;
+          }
+        }
+        > [data-type=problem] > .os-problem-container > ul:not([data-labeled-item=true]) {
+          margin-left: 8px;
+          padding-left: 16px;
+        }
+      }
+    }
+  }
+};
+
+
+// Book code
+@include note-boxed-subtitle('.real-world', 1);
+@include note-boxed-subtitle('.what-would', 2);
+@include note-boxed-subtitle('.ethics-across', 2);

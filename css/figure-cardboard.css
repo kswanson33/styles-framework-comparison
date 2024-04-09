@@ -1,0 +1,25 @@
+.os-figure:not(.has-splash) > figure {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+.os-figure:not(.has-splash) > .os-caption-container {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.7rem;
+  line-height: 1rem;
+}
+.os-figure:not(.has-splash) > .os-caption-container > .os-title-label, .os-figure:not(.has-splash) > .os-caption-container > .os-number, .os-figure:not(.has-splash) > .os-caption-container > .os-title {
+  font-family: "Noto Sans, StixGeneral";
+  font-weight: bold;
+  font-size: 0.833rem;
+  color: #000000;
+}
+.os-figure:not(.has-splash) > .os-caption-container > .os-caption {
+  font-family: "Noto Sans, StixGeneral";
+  font-size: 0.8333rem;
+  color: #757474;
+}
+
+/*# sourceMappingURL=figure-cardboard.css.map */

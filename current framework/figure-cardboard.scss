@@ -1,0 +1,132 @@
+// Color & font info
+
+@include add_settings((
+    typography: (
+        baseFont: ('Noto Sans', StixGeneral),
+    )
+));
+@include add_settings ((
+  scheme: (
+    Grey2: #757474,
+    black: #000000,
+  ),
+
+  colorMap: (
+    captionNumberColor: (_ref: "scheme:::black"),
+    captionTextColor: (_ref: "scheme:::Grey2"),
+  ),
+));
+
+
+// Components - figure
+$Figure__Container: empty_wrapper(FigureContainer, '');
+
+$Figure:(
+    _name: "Figure",
+    _subselector: " > figure",
+    _properties:(
+        display: table,
+        margin-left: auto,
+        margin-right: auto,
+    )
+);
+
+// Components - caption
+$Caption__Container--Figure: (
+    _name: "CaptionContainerFigure",
+    _subselector: " > .os-caption-container",
+    _properties: (
+        display: table,
+        margin-left: auto,
+        margin-right: auto,
+        margin-bottom: v-spacing(1),
+        line-height: 1rem,
+    )
+);
+$Caption__TitleLabel: (
+    _name: "CaptionTitleLabel",
+    _subselector: " > .os-title-label",
+    _properties: (
+        font-family: enum('ValueSet:::REQUIRED'),
+        font-weight: bold,
+        font-size: font-scale(-1),
+        color: enum('ValueSet:::REQUIRED'),
+    )
+);
+$Caption__Number:(
+    _name: "CaptionNumber",
+    _subselector: " > .os-number",
+    _properties:(
+        font-family:  enum('ValueSet:::REQUIRED'),
+        font-weight: bold,
+        font-size: font-scale(-1),
+        color: enum('ValueSet:::REQUIRED'),
+    )
+);
+$Caption__Text:(
+    _name: "CaptionText",
+    _subselector: " > .os-caption",
+    _properties:(
+        font-family: enum('ValueSet:::REQUIRED'),
+        font-size: font-scale(-1),
+        color:  enum('ValueSet:::REQUIRED'),
+    )
+);
+
+$Caption__Title: (
+    _name: "CaptionTitle",
+    _subselector: " > .os-title",
+    _properties:(
+        font-family:  enum('ValueSet:::REQUIRED'),
+        font-weight: bold,
+        font-size: font-scale(-1),
+        color:  enum('ValueSet:::REQUIRED'),
+    )
+);
+
+// Shape
+@include create_shape('cardboard:::FigureShape',(
+    _components: (
+        map-merge($Figure__Container,(
+            _components:(
+                $Figure,
+                map-merge($Caption__Container--Figure, (
+                    _components: (
+                        $Caption__TitleLabel,
+                        $Caption__Number,
+                        $Caption__Title,
+                        $Caption__Text,
+                    )
+                )),
+            ),
+        )),
+    )
+));
+
+// Settings
+
+@include add_settings((
+    Figure:(
+        _selectors: (".os-figure:not(.has-splash)"),
+        CaptionTitleLabel:(
+            font-family: (_ref: "typography:::baseFont"),
+            color: (_ref: "colorMap:::captionNumberColor"),
+        ),
+        CaptionNumber:(
+            font-family: (_ref: "typography:::baseFont"),
+            color: (_ref: "colorMap:::captionNumberColor"),
+        ),
+        CaptionTitle:(
+            font-family: (_ref: "typography:::baseFont"),
+            color: (_ref: "colorMap:::captionNumberColor"),
+        ),
+        CaptionText:(
+            font-family: (_ref: "typography:::baseFont"),
+            color: (_ref: "colorMap:::captionTextColor"),
+        ),
+    ),
+));
+
+// Book file
+@include use('Figure', 'cardboard:::FigureShape');
+

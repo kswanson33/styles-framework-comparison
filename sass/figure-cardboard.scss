@@ -1,0 +1,44 @@
+@use "sass:map";
+
+// Font and color declarations
+$fonts: (
+  "base": "Noto Sans, StixGeneral",
+);
+
+$colors: (
+  "black": #000000,
+  "gray1": #757474,
+);
+
+// Feature code (shared by theme)
+@mixin basic-figure($root: '.os-figure:not(.has-splash)') {
+  #{$root} {
+    > figure {
+      display: table;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    > .os-caption-container {
+      display: table;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 0.7rem;
+      line-height: 1rem;
+      > .os-title-label, > .os-number, > .os-title {
+        font-family: map.get($fonts, 'base'); // access theme font
+        font-weight: bold;
+        font-size: 0.833rem;
+        color: map.get($colors, 'black'); // access theme color
+      }
+      > .os-caption {
+        font-family: map.get($fonts, 'base');
+        font-size: 0.8333rem;
+        color: map.get($colors, 'gray1');
+      }
+    }
+  }
+}
+
+// Book code
+
+@include basic-figure();
